@@ -4,7 +4,7 @@ type AnimValue = float
 type AnimEvent = interface end
 type AnimFunc =
     abstract member start: unit -> unit
-    abstract member start: callback: (obj -> unit) -> unit
+    abstract member start: callback: ({| finished: bool |} -> unit) -> unit
     abstract member stop: unit -> unit
     abstract member reset: unit -> unit
 

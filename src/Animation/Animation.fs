@@ -42,7 +42,7 @@ module animProp =
     [<Erase>]
     type interpolateProp =
         static member inline inputRange (value: seq<float>) = unbox<IInterpolateProp> ("inputRange", value)
-        static member inline outputRange (value: seq<float>) = unbox<IInterpolateProp> ("outputRange", value)
+        static member inline outputRange (value: seq<obj>) = unbox<IInterpolateProp> ("outputRange", value)
         static member inline easing (value: IEasing) = unbox<IInterpolateProp> ("easing", value)
     [<Erase>]
     module interpolateProp =
