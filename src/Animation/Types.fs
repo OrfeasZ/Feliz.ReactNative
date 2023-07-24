@@ -1,6 +1,13 @@
 namespace Feliz.ReactNative.Animation.Types
 
 type AnimValue = float
+type AnimValueXY = {|
+    x: float
+    y: float
+    setValue: {| x: float; y: float |} -> unit
+    setOffset: {| x: float; y: float |} -> unit
+|}
+
 type AnimEvent = interface end
 type AnimFunc =
     abstract member start: unit -> unit
@@ -12,3 +19,4 @@ type IEasing = interface end
 type IConfigProp = interface end
 type IComposeProp = interface end
 type IInterpolateProp = interface end
+type IPanResponderProp = interface end

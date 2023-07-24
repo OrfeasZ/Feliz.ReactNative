@@ -27,6 +27,7 @@ module animProp =
         static member inline stiffness (value: float) = unbox<IConfigProp> ("stiffness", value)
         static member inline tension (value: float) = unbox<IConfigProp> ("tension", value)
         static member inline toValue (value: float) = unbox<IConfigProp> ("toValue", value)
+        static member inline toValueXY (x: float) (y: float) = unbox<IConfigProp> ("toValue", {| x = x; y = y |})
         static member inline useNativeDriver (value: bool) = unbox<IConfigProp> ("useNativeDriver", value)
         static member inline velocity (value: float) = unbox<IConfigProp> ("velocity", value)
         static member inline easing (value: IEasing) = unbox<IConfigProp> ("easing", value)

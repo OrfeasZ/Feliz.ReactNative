@@ -11,11 +11,14 @@ let inline private moduleEasing () = import "Easing" "react-native"
 [<Erase>]
 type Animated =
     static member inline value (value: float) : AnimValue = !!createNew (moduleAnimated?Value) value
-    static member inline valueXY (value: float) : AnimValue = !!createNew (moduleAnimated?ValueXY) value
+    static member inline valueXY (x: float) (y: float) : AnimValueXY = !!createNew (moduleAnimated?ValueXY) {| x = x; y = y |}
 
     static member inline decay (animation: AnimValue) (config: seq<IConfigProp>) : AnimFunc = moduleAnimated?decay (animation, (createObj !!config))
+    static member inline decayXY (animation: AnimValueXY) (config: seq<IConfigProp>) : AnimFunc = moduleAnimated?decay (animation, (createObj !!config))
     static member inline timing (animation: AnimValue) (config: seq<IConfigProp>) : AnimFunc = moduleAnimated?timing (animation, (createObj !!config))
+    static member inline timingXY (animation: AnimValueXY) (config: seq<IConfigProp>) : AnimFunc = moduleAnimated?timing (animation, (createObj !!config))
     static member inline spring (animation: AnimValue) (config: seq<IConfigProp>) : AnimFunc = moduleAnimated?spring (animation, (createObj !!config))
+    static member inline springXY (animation: AnimValueXY) (config: seq<IConfigProp>) : AnimFunc = moduleAnimated?spring (animation, (createObj !!config))
 
     static member inline delay (ms: int) : AnimFunc = moduleAnimated?delay ms
     static member inline parallel' (animations: seq<AnimFunc>) : AnimFunc = moduleAnimated?("parallel") animations

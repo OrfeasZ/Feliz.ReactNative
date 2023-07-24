@@ -3,8 +3,10 @@ namespace Feliz.ReactNative
 open Fable.Core
 open Fable.Core.JsInterop
 
+type ComponentLayout = {| width: float; height: float; x: float; y: float |}
+
 type LayoutEvent =
-    { layout: {| width: float; height: float; x: float; y: float |}
+    { layout: ComponentLayout
       target: float }
 
 type PressEvent =

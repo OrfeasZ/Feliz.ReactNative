@@ -21,6 +21,7 @@
     <Compile Include="Styles.fs" />
     <Compile Include="Props.fs" />
     <Compile Include="Components.fs" />
+    <Compile Include="Gestures.fs" />
   </ItemGroup>
   
   <ItemGroup>
