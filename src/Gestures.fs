@@ -1,11 +1,8 @@
-module Feliz.ReactNative.Gestures
+namespace Feliz.ReactNative
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Feliz
 open Feliz.ReactNative.Animation.Types
-
-let inline panResponderModule() = import "PanResponder" "react-native"
 
 [<Erase>]
 type GestureState = {|
@@ -24,6 +21,7 @@ type GestureState = {|
 [<Erase>]
 type PanResponder =
     static member inline create (config: seq<IPanResponderProp>): {| panHandlers: obj |} =
+        let inline panResponderModule() = import "PanResponder" "react-native"
         panResponderModule?create (createObj !!config)
 
 
