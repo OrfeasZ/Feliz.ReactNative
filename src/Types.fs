@@ -236,3 +236,16 @@ type transform =
 
     static member inline skewY(value: string) =
         unbox<ITransform> (createObj [ "skewY", value ])
+
+[<Erase>]
+type ScrollView =
+    inherit Browser.Types.HTMLElement
+    abstract flushScrollIndicators: unit -> unit
+
+    abstract scrollTo:
+        {| x: float option
+           y: float option
+           animated: bool option |} ->
+            unit
+
+    abstract scrollToEnd: {| animated: bool option |} -> unit
