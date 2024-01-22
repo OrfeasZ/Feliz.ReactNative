@@ -238,14 +238,18 @@ type transform =
         unbox<ITransform> (createObj [ "skewY", value ])
 
 [<Erase>]
+type ScrollOptions =
+    {| x: float option
+       y: float option
+       animated: bool option |}
+
+[<Erase>]
+type ScrollToEndOptions = {| animated: bool option |}
+
+[<Erase>]
 type ScrollView =
     inherit Browser.Types.HTMLElement
+
     abstract flushScrollIndicators: unit -> unit
-
-    abstract scrollTo:
-        {| x: float option
-           y: float option
-           animated: bool option |} ->
-            unit
-
-    abstract scrollToEnd: {| animated: bool option |} -> unit
+    abstract scrollTo: ScrollOptions -> unit
+    abstract scrollToEnd: ScrollToEndOptions -> unit
