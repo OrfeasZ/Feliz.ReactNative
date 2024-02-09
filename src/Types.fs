@@ -1,5 +1,6 @@
 namespace Feliz.ReactNative
 
+open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 
@@ -247,9 +248,30 @@ type ScrollOptions =
 type ScrollToEndOptions = {| animated: bool option |}
 
 [<Erase>]
-type ScrollView =
-    inherit Browser.Types.HTMLElement
+type NativeMethods =
+    /// <summary>
+    /// Measures the view relative an ancestor,
+    /// specified as <c>relativeToNativeComponentRef</c>. This means that the returned x, y
+    /// are relative to the origin x, y of the ancestor view.
+    /// Can also be called with a <c>relativeNativeNodeHandle</c> but is deprecated.
+    /// </summary>
+    /// <param name="relativeToNativeComponentRef">The ancestor element.</param>
+    /// <param name="onSuccess">The callback called when the element successfully measures. The callback returns values for x, y, width and height.</param>
+    /// <param name="onError">The callback called when an error occurred.</param>
+    abstract measureLayout: HTMLElement -> (float -> float -> float -> float -> unit) -> (unit -> unit) option -> unit
 
+[<Erase>]
+type View =
+    inherit HTMLElement
+    inherit NativeMethods
+
+[<Erase>]
+type Pressable =
+    inherit View
+
+[<Erase>]
+type ScrollView =
+    inherit View
     abstract flushScrollIndicators: unit -> unit
     abstract scrollTo: ScrollOptions -> unit
     abstract scrollToEnd: ScrollToEndOptions -> unit
