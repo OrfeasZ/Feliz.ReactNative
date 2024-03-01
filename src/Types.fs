@@ -250,6 +250,25 @@ type ScrollToEndOptions = {| animated: bool option |}
 [<Erase>]
 type NativeMethods =
     /// <summary>
+    /// Determines the location on screen, width, and height of the given view and
+    /// returns the values via an async callback. Note that these measurements are not available until after the rendering
+    /// has been completed in native. If you need the measurements as soon as
+    /// possible, consider using the <c>onLayout</c> instead.
+    /// </summary>
+    /// <param name="onSuccess">The callback called when the element successfully measures. The callback returns values for x, y, width, height, pageX and pageY.</param>
+    abstract measure: (float -> float -> float -> float -> float -> float -> unit) -> unit
+
+    /// <summary>
+    /// Determines the location of the given view in the window and returns the
+    /// values via an async callback. If the React root view is embedded in
+    /// another native view, this will give you the absolute coordinates.
+    /// Note that these measurements are not available until after the rendering
+    /// has been completed in native.
+    /// </summary>
+    /// <param name="onSuccess">The callback called when the element successfully measures. The callback returns values for x, y, width and height.</param>
+    abstract measureInWindow: (float -> float -> float -> float -> unit) -> unit
+
+    /// <summary>
     /// Measures the view relative an ancestor,
     /// specified as <c>relativeToNativeComponentRef</c>. This means that the returned x, y
     /// are relative to the origin x, y of the ancestor view.
