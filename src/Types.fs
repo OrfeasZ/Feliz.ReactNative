@@ -8,9 +8,7 @@ type ComponentLayout =
     {| width: float
        height: float
        x: float
-       y: float
-       top: float
-       left: float |}
+       y: float |}
 
 type LayoutEvent =
     { layout: ComponentLayout
