@@ -23,6 +23,7 @@
     <Compile Include="Components.fs"/>
     <Compile Include="Linking.fs"/>
     <Compile Include="Gestures.fs"/>
+    <Compile Include="Android.fs"/>
   </ItemGroup>
 
   <ItemGroup>
