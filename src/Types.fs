@@ -25,6 +25,8 @@ type PressEvent =
       timestamp: float
       touches: PressEvent[] }
 
+type NativePressEvent = {| nativeEvent: PressEvent |}
+
 [<StringEnum; RequireQualifiedAccess>]
 type AccessibilityRole =
     | Adjustable
