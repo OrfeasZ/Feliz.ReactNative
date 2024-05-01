@@ -35,8 +35,8 @@ type Animated =
 
     static member inline event (listeners: seq<_>) : _ -> AnimEvent = moduleAnimated?event listeners
     static member inline event (events: seq<_>, config: seq<IComposeProp>) : _ -> AnimEvent = moduleAnimated?event (events, (createObj !!config))
-    static member inline loop (animation: AnimValue) : AnimFunc = moduleAnimated?loop animation
-    static member inline loop (animation: AnimValue, config: seq<IComposeProp>) : AnimFunc = moduleAnimated?loop (animation, (createObj !!config))
+    static member inline loop (animation: AnimFunc) : AnimFunc = moduleAnimated?loop animation
+    static member inline loop (animation: AnimFunc, config: seq<IComposeProp>) : AnimFunc = moduleAnimated?loop (animation, (createObj !!config))
 
     static member inline forkEvent (event: AnimEvent) (listener: _ -> unit) = moduleAnimated?forkEvent event listener
     static member inline unforkEvent (event: AnimEvent) (listener: _ -> unit) = moduleAnimated?unforkEvent event listener
