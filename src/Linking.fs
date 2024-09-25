@@ -9,7 +9,7 @@ type EventSubscription = {| remove: unit -> unit |}
 
 [<Import("Linking", "react-native")>]
 module Linking =
-    let addEventListener: (string * (LinkingEvent -> unit)) -> EventSubscription =
+    let addEventListener: System.Func<string, (LinkingEvent -> unit), EventSubscription> =
         jsNative
 
     let canOpenURL: string -> Promise<bool> = jsNative
