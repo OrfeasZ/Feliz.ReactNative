@@ -141,7 +141,7 @@ module Animation =
     /// Same as ``animation.resetAnimation(callback)``.
     let inline resetAnimationCB (callback: {| value: AnimValue |} -> unit) (animation: AnimValue) : unit = animation?resetAnimation callback
     /// Same as ``animation.interpolate(config)``.
-    let inline interpolate (config: seq<IInterpolateProp>) (animation: AnimValue) : AnimValue = animation?interpolate (createObj !!config)
+    let inline interpolate (config: seq<IInterpolateProp>) (animation: AnimValue) : 'a = animation?interpolate (createObj !!config)
     /// Same as ``animation.getLayout()``.
     let inline getLayout (animation: AnimValue) : {| left: float; top: float |} = animation?getLayout()
     /// Same as ``animation.getTranslateTransform()``.
