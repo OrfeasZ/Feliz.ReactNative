@@ -294,3 +294,8 @@ type ScrollView =
     abstract flushScrollIndicators: unit -> unit
     abstract scrollTo: ScrollOptions -> unit
     abstract scrollToEnd: ScrollToEndOptions -> unit
+
+[<Erase>]
+type FlatList =
+    inherit ScrollView
+    abstract getNativeScrollRef: unit -> ScrollView
