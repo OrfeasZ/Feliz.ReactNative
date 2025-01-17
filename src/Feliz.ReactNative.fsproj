@@ -26,6 +26,7 @@
     <Compile Include="Android.fs"/>
     <Compile Include="Platform.fs"/>
     <Compile Include="AppState.fs"/>
+    <Compile Include="AccessibilityInfo.fs"/>
   </ItemGroup>
 
   <ItemGroup>
