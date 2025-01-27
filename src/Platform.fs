@@ -1,6 +1,7 @@
 namespace Feliz.ReactNative
 
 open Fable.Core
+open Fable.Core.JsInterop
 
 [<Erase>]
 type ReactNativeVersion =
@@ -47,3 +48,7 @@ module Platform =
     let isTesting: bool = jsNative
     let OS: OS = jsNative
     let Version: U2<int, string> = jsNative
+
+[<Import("Platform", "react-native")>]
+type Platform =
+    static member inline select(obj: obj) : 'a = jsNative
