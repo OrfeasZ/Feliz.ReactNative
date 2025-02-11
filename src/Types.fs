@@ -3,6 +3,7 @@ namespace Feliz.ReactNative
 open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
+open Fable.React
 
 type ComponentLayout =
     {| width: float
@@ -79,9 +80,7 @@ type ImageLoadEvent =
            height: float |} }
 
 
-type IRect =
-    interface
-    end
+type IRect = interface end
 
 [<Erase>]
 type Rect =
@@ -90,17 +89,11 @@ type Rect =
     static member inline right(value: float) = unbox<IRect> ("right", value)
     static member inline bottom(value: float) = unbox<IRect> ("bottom", value)
 
-type IImageSource =
-    interface
-    end
+type IImageSource = interface end
 
-type IImageSourceProp =
-    interface
-    end
+type IImageSourceProp = interface end
 
-type IImageCacheEnum =
-    interface
-    end
+type IImageCacheEnum = interface end
 
 module ImageSource =
     [<Erase>]
@@ -149,9 +142,7 @@ type ViewToken =
       index: int
       isViewable: bool }
 
-type IViewabilityConfig =
-    interface
-    end
+type IViewabilityConfig = interface end
 
 [<Erase>]
 type ViewabilityConfig =
@@ -167,9 +158,7 @@ type ViewabilityConfig =
     static member inline waitForInteraction(value: bool) =
         unbox<IViewabilityConfig> ("waitForInteraction", value)
 
-type IRippleConfig =
-    interface
-    end
+type IRippleConfig = interface end
 
 [<Erase>]
 type RippleConfig =
@@ -193,9 +182,27 @@ type FlatListItem<'Item> =
              unhighlight: (unit -> unit)
              updateProps: (unit -> unit) |} }
 
-type ITransform =
-    interface
-    end
+[<AutoOpen>]
+module rec SectionListTypes =
+    type SectionListItem<'Item, 'Key> =
+        { index: int
+          item: 'Item
+          section: Section<'Item, 'Key>
+          separators:
+              {| highlight: unit -> unit
+                 newProps: 'Item
+                 select: string
+                 unhighlight: unit -> unit
+                 updateProps: unit -> unit |} }
+
+    type Section<'Item, 'Key> =
+        { data: 'Item array
+          key: string option
+          renderItem: (SectionListItem<'Item, 'Key> -> ReactElement) option
+          ItemSeparatorComponent: ReactElement option
+          keyExtractor: ('Item -> 'Key) option }
+
+type ITransform = interface end
 
 [<Erase>]
 type transform =
@@ -248,6 +255,33 @@ type ScrollOptions =
 type ScrollToEndOptions = {| animated: bool option |}
 
 [<Erase>]
+type ScrollToIndexOptions =
+    {| index: int
+       animated: bool option
+       viewOffset: float option
+       viewPosition: float option |}
+
+[<Erase>]
+type ScrollToItemOptions<'Item> =
+    {| item: 'Item
+       animated: bool option
+       viewOffset: float option
+       viewPosition: float option |}
+
+[<Erase>]
+type ScrollToOffsetOptions =
+    {| offset: float
+       animated: bool option |}
+
+[<Erase>]
+type ScrollToLocationOptions =
+    {| animated: bool option
+       itemIndex: int
+       sectionIndex: int
+       viewOffset: float option
+       viewPosition: float option |}
+
+[<Erase>]
 type NativeMethods =
     /// <summary>
     /// Determines the location on screen, width, and height of the given view and
@@ -289,13 +323,30 @@ type Pressable =
     inherit View
 
 [<Erase>]
+type VirtualizedList =
+    inherit View
+    abstract flashScrollIndicators: unit -> unit
+    abstract getScrollableNode: unit -> obj
+    abstract scrollTo: ScrollOptions -> unit
+    abstract scrollToEnd: ScrollToEndOptions -> unit
+    abstract scrollToIndex: ScrollToIndexOptions -> unit
+    abstract scrollToItem: ScrollToItemOptions<'a> -> unit
+    abstract scrollToOffset: ScrollToOffsetOptions -> unit
+
+[<Erase>]
 type ScrollView =
     inherit View
-    abstract flushScrollIndicators: unit -> unit
+    abstract flashScrollIndicators: unit -> unit
     abstract scrollTo: ScrollOptions -> unit
     abstract scrollToEnd: ScrollToEndOptions -> unit
 
 [<Erase>]
 type FlatList =
-    inherit ScrollView
+    inherit VirtualizedList
     abstract getNativeScrollRef: unit -> ScrollView
+
+[<Erase>]
+type SectionList =
+    inherit VirtualizedList
+    abstract recordInteraction: unit -> unit
+    abstract scrollToLocation: ScrollToLocationOptions -> unit
