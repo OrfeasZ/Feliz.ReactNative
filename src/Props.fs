@@ -524,7 +524,7 @@ type prop =
     static member inline renderItem(value: FlatListItem<_> -> ReactElement) = Interop.mkAttr "renderItem" value
     static member inline renderItem(value: SectionListItem<_, _> -> ReactElement) = Interop.mkAttr "renderItem" value
     static member inline data(value: seq<'Item>) = Interop.mkAttr "data" value
-    static member inline sections(value: Section<_, _> array) = Interop.mkAttr "sections" value
+    static member inline sections(value: seq<'Section>) = Interop.mkAttr "sections" value
 
     static member inline ItemSeparatorComponent(value: ReactElement) =
         Interop.mkAttr "ItemSeparatorComponent" value

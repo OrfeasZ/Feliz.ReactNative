@@ -184,23 +184,16 @@ type FlatListItem<'Item> =
 
 [<AutoOpen>]
 module rec SectionListTypes =
-    type SectionListItem<'Item, 'Key> =
+    type SectionListItem<'Item, 'Section> =
         { index: int
           item: 'Item
-          section: Section<'Item, 'Key>
+          section: 'Section
           separators:
               {| highlight: unit -> unit
                  newProps: 'Item
                  select: string
                  unhighlight: unit -> unit
                  updateProps: unit -> unit |} }
-
-    type Section<'Item, 'Key> =
-        { data: 'Item array
-          key: string option
-          renderItem: (SectionListItem<'Item, 'Key> -> ReactElement) option
-          ItemSeparatorComponent: ReactElement option
-          keyExtractor: ('Item -> 'Key) option }
 
 type ITransform = interface end
 
