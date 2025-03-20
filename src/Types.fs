@@ -316,6 +316,15 @@ type Pressable =
     inherit View
 
 [<Erase>]
+type TextInput =
+    inherit View
+    inherit HTMLInputElement
+    abstract focus: unit -> unit
+    abstract blur: unit -> unit
+    abstract clear: unit -> unit
+    abstract isFocused: unit -> unit
+
+[<Erase>]
 type VirtualizedList =
     inherit View
     abstract flashScrollIndicators: unit -> unit
