@@ -322,7 +322,7 @@ type TextInput =
     abstract focus: unit -> unit
     abstract blur: unit -> unit
     abstract clear: unit -> unit
-    abstract isFocused: unit -> unit
+    abstract isFocused: unit -> bool
 
 [<Erase>]
 type VirtualizedList =
