@@ -310,6 +310,7 @@ type NativeMethods =
 type View =
     inherit HTMLElement
     inherit NativeMethods
+    abstract setNativeProps: obj -> unit
 
 [<Erase>]
 type Pressable =
