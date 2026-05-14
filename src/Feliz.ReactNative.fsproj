@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Feliz.ReactNative</PackageId>
     <Version>0.8.2</Version>
@@ -28,11 +28,11 @@
     <Compile Include="Platform.fs"/>
     <Compile Include="AppState.fs"/>
     <Compile Include="AccessibilityInfo.fs"/>
-    <Compile Include="PixelRatio.fs" />
+    <Compile Include="PixelRatio.fs"/>
   </ItemGroup>
 
   <ItemGroup>
-    <!--<PackageReference Include="Feliz" Version="2.6.0"/>-->
-    <ProjectReference Include="..\..\Feliz\Feliz\Feliz.fsproj"/>
+    <PackageReference Include="Feliz"/>
+    <!--<ProjectReference Include="..\..\Feliz\src\Feliz\Feliz.fsproj"/>-->
   </ItemGroup>
 </Project>

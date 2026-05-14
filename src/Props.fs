@@ -80,7 +80,7 @@ type prop =
     static member inline children(value: ReactElement) = Interop.mkAttr "children" value
 
     static member inline children(elems: ReactElement seq) =
-        Interop.mkAttr "children" (Feliz.Interop.reactApi.Children.toArray (Array.ofSeq elems))
+        Interop.mkAttr "children" (Interop.reactApi.Children.toArray (Array.ofSeq elems))
 
     static member inline collapsable(value: bool) = Interop.mkAttr "collapsable" value
     static member inline focusable(value: bool) = Interop.mkAttr "focusable" value
