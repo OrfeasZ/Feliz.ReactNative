@@ -28,6 +28,8 @@ type PressEvent =
 
 type NativePressEvent = {| nativeEvent: PressEvent |}
 
+type NativeLayoutEvent = {| nativeEvent: LayoutEvent |}
+
 [<StringEnum; RequireQualifiedAccess>]
 type AccessibilityRole =
     | Adjustable
